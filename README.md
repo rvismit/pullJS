@@ -8,3 +8,7 @@ Usage
 cd pullJS
 
 ./pullJS.sh
+
+# Requirement
+
+sudo apt-get install jq
