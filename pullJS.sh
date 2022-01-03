@@ -20,7 +20,7 @@ if
                 host $vardomain
                 then
                 echo "Resolved"
-curl http://web.archive.org/cdx/search/cdx?url=*.$vardomain/.*\&output=text\&fl=original\&collapse=urlkey | sort | grep $vardomain".js" | sort -u >> output.txt
+curl http://web.archive.org/cdx/search/cdx?url=*.$vardomain/.*\&output=text\&fl=original\&collapse=urlkey | grep $vardomain".js" | sort -u >> output.txt
 curl http://index.commoncrawl.org/CC-MAIN-2018-22-index?url=*.$vardomain/.*\&output=json | jq -r .url | grep ".js" |sort -u >> output.txt
 for URL in `cat output.txt`; do echo $URL; curl -m 10 -s -I $1 "$URL" | grep HTTP/1.1 | awk {'print $2'}; done >> output.txt
 else
